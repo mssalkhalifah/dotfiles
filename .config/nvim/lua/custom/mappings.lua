@@ -16,12 +16,12 @@ map("v", "<A-k>", ":m .-2<CR>==")
 map("x", "<A-j>", ":move '>+1<CR>gv-gv")
 map("x", "<A-k>", ":move '<-2<CR>gv-gv")
 -- Mac options alt
-map("n", "<M-j>", "<Esc>:m .+1<CR>==gi")
-map("n", "<M-k>", "<Esc>:m .-2<CR>==gi")
-map("v", "<M-j>", ":m .+1<CR>==")
-map("v", "<M-k>", ":m .-2<CR>==")
-map("x", "<M-j>", ":move '>+1<CR>gv-gv")
-map("x", "<M-k>", ":move '<-2<CR>gv-gv")
+map("n", "∆", "<Esc>:m .+1<CR>==gi")
+map("n", "˚", "<Esc>:m .-2<CR>==gi")
+map("v", "∆", ":m .+1<CR>==")
+map("v", "˚", ":m .-2<CR>==")
+map("x", "∆", ":move '>+1<CR>gv-gv")
+map("x", "˚", ":move '<-2<CR>gv-gv")
 
 -- Indent --
 -- Stay in indent mode
