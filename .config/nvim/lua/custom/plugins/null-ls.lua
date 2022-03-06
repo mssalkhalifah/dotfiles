@@ -7,7 +7,6 @@ local sources = {
   formatting.black.with({ extra_args = { "--fast" } }),
   formatting.stylua,
   diagnostics.luacheck.with({ extra_args = { "--global vim" } }),
-  diagnostics.eslint,
   diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 }
 
