@@ -3,7 +3,7 @@ local map = require("core.utils").map
 -- General --
 -- Paste without yank
 map("v", "p", '"_dP')
--- Resize with arrows 
+-- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>")
 map("n", "<C-Down>", ":resize +2<CR>")
 map("n", "<C-Left>", ":vertical resize -2<CR>")
