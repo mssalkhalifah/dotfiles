@@ -23,10 +23,11 @@ apply_permissions() {
 
 # Main function
 main() {
-    backup_dotfiles
-    create_symlinks
-    apply_permissions
-    echo "Dotfiles setup complete!"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+  backup_dotfiles
+  create_symlinks
+  apply_permissions
+  echo "Dotfiles setup complete!"
 }
 
 main
