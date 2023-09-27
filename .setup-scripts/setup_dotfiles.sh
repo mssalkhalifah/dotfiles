@@ -27,6 +27,7 @@ main() {
   backup_dotfiles
   create_symlinks
   apply_permissions
+  mv ~/.git ~/.dotfiles 2>/dev/null
   echo "Dotfiles setup complete!"
 }
 
