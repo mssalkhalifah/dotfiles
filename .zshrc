@@ -89,7 +89,18 @@ if command -v ng &> /dev/null; then
     source <(ng completion script)
 fi
 
-source /usr/share/nvm/init-nvm.sh
+# Check if init-nvm.sh exists
+if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
+  source /usr/share/nvm/init-nvm.sh
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  echo "init-nvm.sh loaded by nvm.sh"
+fi
+
+if command -v pyenv &> /dev/null; then
+  eval "$(pyenv init -)"
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -120,10 +131,5 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-eval "$(pyenv init -)"
 
 alias luamake=/home/mssalkhalifah/Download/lua-language-server/3rd/luamake/luamake
