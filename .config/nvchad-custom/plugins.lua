@@ -40,6 +40,7 @@ local plugins = {
 				"tsx",
 				"typescript",
 				"dockerfile",
+				"terraform",
 			},
 		},
 	},
