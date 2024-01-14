@@ -7,6 +7,16 @@ local plugins = {
 		lazy = false,
 	},
 	{
+		"nvim-lua/plenary.nvim",
+	},
+	{
+		"akinsho/flutter-tools.nvim",
+		config = function()
+			require("flutter-tools").setup({})
+		end,
+		lazy = false,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"jose-elias-alvarez/null-ls.nvim",
@@ -61,6 +71,7 @@ local plugins = {
 				"shellcheck",
 				"docker-compose-language-service",
 				"dockerfile-language-server",
+        "csharp-language-server"
 			},
 		},
 	},
