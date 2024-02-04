@@ -1,4 +1,30 @@
 local plugins = {
+  {
+    "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function()
+      local dap = require("dap")
+      local dapui = require("dapui")
+      require("dapui").setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end
+  },
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require "custom.configs.dap"
+      require("core.utils").load_mappings("dap")
+    end
+  },
 	{
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
@@ -10,20 +36,14 @@ local plugins = {
 		"nvim-lua/plenary.nvim",
 	},
 	{
-		"akinsho/flutter-tools.nvim",
-		config = function()
-			require("flutter-tools").setup({})
-		end,
-		lazy = false,
-	},
-	{
+    "jose-elias-alvarez/null-ls.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return require "custom.configs.null-ls"
+    end,
+  },
+  {
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			"jose-elias-alvarez/null-ls.nvim",
-			config = function()
-				require("custom.configs.null-ls")
-			end,
-		},
 		config = function()
 			require("plugins.configs.lspconfig")
 			require("custom.configs.lspconfig")
@@ -33,6 +53,7 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
+        "angular",
 				"lua",
 				"c_sharp",
 				"css",
@@ -61,6 +82,8 @@ local plugins = {
 				"css-lsp",
 				"html-lsp",
 				"json-lsp",
+				"eslint-lsp",
+        "js-debug-adapter",
 				"lua-language-server",
 				"sqlls",
 				"sqls",
@@ -71,24 +94,13 @@ local plugins = {
 				"shellcheck",
 				"docker-compose-language-service",
 				"dockerfile-language-server",
-        "csharp-language-server"
+				"csharp-language-server",
+				"angular-language-server",
 			},
 		},
 	},
 	{
 		"max397574/better-escape.nvim",
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			config = function()
-				require("custom.configs.nvim-dap")
-			end,
-		},
-		config = function()
-			require("dapui")
-		end,
 	},
 }
 

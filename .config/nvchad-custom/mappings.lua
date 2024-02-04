@@ -56,12 +56,10 @@ M.clipboard = {
 	},
 }
 
-M.debugger = {
+M.dap = {
 	n = {
-		["<leader>dt"] = { ":DapUiToggle<CR>", "toggle DAP ui", { noremap = true } },
-		["<leader>db"] = { ":DapToggleBreakpoint<CR>", "toggle breakpoint", { noremap = true } },
-		["<leader>dc"] = { ":DapContinue<CR>", "DAP continue", { noremap = true } },
-		["<leader>dr"] = { ":lua require('dapui').open({reset = true})<CR>", "toggle DAP ui", { noremap = true } },
+		["<leader>db"] = { ":DapToggleBreakpoint<CR>", "toggle breakpoint", {} },
+		["<leader>dr"] = { ":DapContinue<CR>", "Run or continue the debugger", {} },
 	},
 }
 
