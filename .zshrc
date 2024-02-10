@@ -7,7 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.tools/lua-language-server/bin:/usr/local/go/bin:$PATH"
+export PATH="$HOME/.cargo/env:$HOME/.tools/lua-language-server/bin:/usr/local/go/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -87,14 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # Load Angular CLI autocompletion.
 if command -v ng &> /dev/null; then
     source <(ng completion script)
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-if command -v pyenv &> /dev/null; then
-  eval "$(pyenv init -)"
 fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
