@@ -2,7 +2,11 @@ local plugins = {
 	{
 		"mfussenegger/nvim-jdtls",
 		dependencies = "neovim/nvim-lspconfig",
-		event = "BufRead",
+		-- event = "BufRead",
+		ft = "java",
+		config = function()
+			require("custom.configs.lsp.java")
+		end,
 	},
 	{
 		"mfussenegger/nvim-dap-python",

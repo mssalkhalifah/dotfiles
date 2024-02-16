@@ -63,4 +63,15 @@ M.dap = {
 	},
 }
 
+M.java = {
+	-- n = {
+	-- 	["<C-o>"] = { require("jdtls").organize_imports, "Organize imports", {} },
+	-- 	["<space>ev"] = { require("jdtls").extract_variable, "Extract variable", {} },
+	-- 	["<space>ec"] = { require("jdtls").extract_constant, "Extract constant", {} },
+	-- },
+	-- v = {
+	-- 	["<space>em"] = { "<ESC><CMD>lua require('jdtls').extract_method(true)<CR>", "Extract method", {} },
+	-- },
+}
+
 return M
