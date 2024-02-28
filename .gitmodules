@@ -1,3 +1,12 @@
 [submodule "/Users/mssalkhalifah/.config/nvim"]
 	path = /Users/mssalkhalifah/.config/nvim
 	url = https://github.com/NvChad/NvChad.git
+[submodule "/Users/mssalkhalifah/.zsh/pure"]
+	path = /Users/mssalkhalifah/.zsh/pure
+	url = https://github.com/sindresorhus/pure.git
+[submodule "/Users/mssalkhalifah/.zsh/zsh-autosuggestions"]
+	path = /Users/mssalkhalifah/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "/Users/mssalkhalifah/.zsh/zsh-syntax-highlighting"]
+	path = /Users/mssalkhalifah/.zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
