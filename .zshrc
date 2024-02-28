@@ -14,6 +14,9 @@ export JAVA_HOME=""
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $HOME/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # Load Angular CLI autocompletion.
 if command -v ng &> /dev/null; then

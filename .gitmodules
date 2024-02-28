@@ -13,3 +13,6 @@
 [submodule "/Users/mssalkhalifah/.zsh/zsh-autocomplete"]
 	path = /Users/mssalkhalifah/.zsh/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule "/Users/mssalkhalifah/.zsh/zsh-vi-mode"]
+	path = /Users/mssalkhalifah/.zsh/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode.git
