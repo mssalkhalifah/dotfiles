@@ -1,0 +1,3 @@
+[submodule "/Users/mssalkhalifah/.config/nvim"]
+	path = /Users/mssalkhalifah/.config/nvim
+	url = https://github.com/NvChad/NvChad.git
