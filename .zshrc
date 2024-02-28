@@ -11,8 +11,9 @@ export PATH="$HOME/.cargo/env:$HOME/.tools/lua-language-server/bin:/usr/local/go
 export JAVA_HOME=""
 
 # Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Load Angular CLI autocompletion.
 if command -v ng &> /dev/null; then
