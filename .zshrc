@@ -111,14 +111,6 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="$HOME/.dotfiles/Applications/nvim.appimage"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# cc952e6d-1ac5-4911-a732-377a2fd80e3d
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# 85b93786-fde8-4f47-a1a0-a4edda35fe00
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+alias ll="ls -la"
+alias python=python3
+alias pip=pip3
