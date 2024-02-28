@@ -16,3 +16,6 @@
 [submodule "/Users/mssalkhalifah/.zsh/zsh-vi-mode"]
 	path = /Users/mssalkhalifah/.zsh/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode.git
+[submodule "/Users/mssalkhalifah/.tmux/plugins/tpm"]
+	path = /Users/mssalkhalifah/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
