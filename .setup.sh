@@ -15,7 +15,7 @@ if command_exists brew; then
 fi
 
 if command_exists dnf; then
-  sudo dnf update && sudp dnf upgrade
+  sudo dnf update && sudo dnf upgrade
   sudo dnf install -y nodejs rust golang zsh ripgrep tmux kitty
 fi
 
