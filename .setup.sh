@@ -9,23 +9,23 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-if ! command_exists brew; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
 if command_exists brew; then
   brew update && brew upgrade
-  brew install node rust goland zsh ripgrep tmux kitty
+  brew install node rust golang zsh ripgrep tmux kitty
 fi
 
 if command_exists dnf; then
   sudo dnf update && sudp dnf upgrade
-  sudo dnf install -y nodejs rust goland zsh ripgrep tmux kitty
+  sudo dnf install -y nodejs rust golang zsh ripgrep tmux kitty
 fi
 
 if command_exists apt; then
-  sudo apt update && sudp apt upgrade
-  sudo apt install -y nodejs rustc goland zsh ripgrep tmux kitty
+  sudo apt update && sudo apt upgrade
+  sudo apt install -y nodejs rustc golang zsh ripgrep tmux kitty
+fi
+
+if ! [ -d $HOME/.config/nvim/lua/custom ]; then
+  ln -s $HOME/.config/nvchad-custom $HOME/.config/nvim/lua/custom
 fi
 
 chsh -s "$(which zsh)"
