@@ -1,21 +1,21 @@
-[submodule "/Users/mssalkhalifah/.config/nvim"]
-	path = /Users/mssalkhalifah/.config/nvim
+[submodule ".config/nvim"]
+	path = .config/nvim
 	url = https://github.com/NvChad/NvChad.git
-[submodule "/Users/mssalkhalifah/.zsh/pure"]
-	path = /Users/mssalkhalifah/.zsh/pure
+[submodule ".zsh/pure"]
+	path = .zsh/pure
 	url = https://github.com/sindresorhus/pure.git
-[submodule "/Users/mssalkhalifah/.zsh/zsh-autosuggestions"]
-	path = /Users/mssalkhalifah/.zsh/zsh-autosuggestions
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "/Users/mssalkhalifah/.zsh/zsh-syntax-highlighting"]
-	path = /Users/mssalkhalifah/.zsh/zsh-syntax-highlighting
+[submodule ".zsh/zsh-syntax-highlighting"]
+	path = .zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "/Users/mssalkhalifah/.zsh/zsh-autocomplete"]
-	path = /Users/mssalkhalifah/.zsh/zsh-autocomplete
+[submodule ".zsh/zsh-autocomplete"]
+	path = .zsh/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
-[submodule "/Users/mssalkhalifah/.zsh/zsh-vi-mode"]
-	path = /Users/mssalkhalifah/.zsh/zsh-vi-mode
+[submodule ".zsh/zsh-vi-mode"]
+	path = .zsh/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode.git
-[submodule "/Users/mssalkhalifah/.tmux/plugins/tpm"]
-	path = /Users/mssalkhalifah/.tmux/plugins/tpm
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
