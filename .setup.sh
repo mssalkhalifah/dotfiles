@@ -12,17 +12,17 @@ command_exists() {
 
 if command_exists brew; then
   brew update && brew upgrade
-  brew install node rust golang zsh ripgrep tmux kitty cargo
+  brew install node rust golang zsh ripgrep tmux kitty cargo cmake
 fi
 
 if command_exists dnf; then
   sudo dnf update && sudo dnf upgrade
-  sudo dnf install nodejs rust golang zsh ripgrep tmux kitty cargo
+  sudo dnf install nodejs rust golang zsh ripgrep tmux kitty cargo cmake
 fi
 
 if command_exists apt; then
   sudo apt update && sudo apt upgrade
-  sudo apt install nodejs rustc golang zsh ripgrep tmux kitty cargo
+  sudo apt install nodejs rustc golang zsh ripgrep tmux kitty cargo cmake
 fi
 
 if ! [ -d "$HOME/.local/share/fonts" ]; then
