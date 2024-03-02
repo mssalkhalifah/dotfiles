@@ -25,7 +25,7 @@ fi
 
 alias vim="$HOME/.dotfiles/Applications/nvim.appimage"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias ll="ls -la"
+alias l="ls -la"
 alias python=python3
 alias pip=pip3
 
