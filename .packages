@@ -8,3 +8,4 @@ openssh-clients
 dotnet-sdk-9.0
 dotnet-sdk-8.0
 luarocks
+htop
