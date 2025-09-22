@@ -13,10 +13,10 @@ gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.32/rpm/repodata/repomd.xml.key
 EOF
     echo "Installing kubectl..."
-    sudo yum install -y kubectl
+    sudo dnf install -y kubectl
   else
     echo "Kubernetes repository already exists. Installing kubectl..."
-    sudo yum install -y kubectl
+    sudo dnf install -y kubectl
   fi
 elif [ -f /etc/debian_version ]; then
   echo "Debian-based distribution detected."
