@@ -192,7 +192,9 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "jsonls",
       },
+      automatic_installation = true,
     },
   },
 }
