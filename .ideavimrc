@@ -1,0 +1,121 @@
+" ============================================================================
+" Basic Settings
+" ============================================================================
+let mapleader = " "
+
+" ============================================================================
+" Plugins
+" ============================================================================
+set NERDTree
+set surround          " ys, cs, ds commands for surrounding text
+set commentary        " gcc, gc for commenting
+set highlightedyank   " briefly highlights yanked text
+set easymotion        " <leader><leader> for easy motion
+set idearefactormode=keep  " Keep Vim mode in refactoring dialogs
+
+" ============================================================================
+" Basic Key Mappings
+" ============================================================================
+
+" --- Insert Mode Mappings ---
+inoremap jk <Esc>
+
+" --- Tab Navigation ---
+nnoremap <S-l> :tabnext<CR>
+nnoremap <S-h> :tabprev<CR>
+
+" --- Window/Pane Navigation ---
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+
+" ============================================================================
+" File Explorer
+" ============================================================================
+map <leader>e :NERDTreeToggle<CR>
+
+" ============================================================================
+" Buffer/Tab Management
+" ============================================================================
+map <leader>bd <Action>(CloseContent)
+map <leader>bp <Action>(PinActiveEditorTab)
+map <leader>bP <Action>(CloseAllUnpinnedEditors)
+map <leader>bo <Action>(CloseAllEditorsButActive)
+
+" ============================================================================
+" File Operations
+" ============================================================================
+map <leader><space> <action>(GotoFile)
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)
+
+" ============================================================================
+" Search Operations
+" ============================================================================
+map <leader>/ <action>(FindInPath)
+map <leader>sg <action>(FindInPath)
+map <leader>sr <action>(ReplaceInPath)
+
+" --- Global Search ---
+map <leader>sE <action>(SearchEverywhere)
+map <leader>sc <action>(GotoAction)
+map <leader>sk <action>(GotoAction)
+map <leader>so <action>(GotoSymbol)
+
+" ============================================================================
+" Code Navigation (LSP-style)
+" ============================================================================
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(ShowUsages)
+nmap gi <Action>(GotoImplementation)
+nmap gy <Action>(GotoTypeDeclaration)
+
+" --- Navigation History ---
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+
+" ============================================================================
+" Clipboard Operations
+" ============================================================================
+
+" --- Enhanced Paste ---
+vnoremap p "_dP
+
+" --- System Clipboard ---
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+
+" --- Delete Without Yanking ---
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" ============================================================================
+" Code Actions & Refactoring
+" ============================================================================
+
+" --- Quick Actions ---
+map <leader>ca <Action>(ShowIntentionActions)
+map <leader>cA <Action>(Refactorings.QuickListPopupAction)
+
+" --- Rename Operations ---
+map <leader>cr <Action>(RenameElement)
+map <leader>cR <Action>(Refactorings.QuickListPopupAction)
+map <leader>rn <Action>(RenameElement)
+
+" --- Extract Refactorings ---
+map <leader>re <Action>(ExtractMethod)
+map <leader>rE <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+
+" --- Advanced Refactorings ---
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" ============================================================================
+" End of Configuration
+" ============================================================================
