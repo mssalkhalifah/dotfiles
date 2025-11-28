@@ -27,3 +27,6 @@ scripts
 
 .packages
 packages
+
+\.DS_Store
+.DS_Store
