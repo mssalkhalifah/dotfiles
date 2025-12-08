@@ -12,3 +12,19 @@ if status is-interactive
     # aliases
     alias ll="ls -la"
 end
+
+set fish_greeting ""
+
+set -gx PATH $HOME/.dotnet/tools $PATH
+
+if type -q /Applications/Tailscale.app/Contents/MacOS/Tailscale
+    alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+end
+
+if type -q nvm
+    nvm use lts
+end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
