@@ -22,7 +22,7 @@ if type -q /Applications/Tailscale.app/Contents/MacOS/Tailscale
 end
 
 if type -q nvm
-    nvm use lts
+    nvm use lts >/dev/null 2>&1
 end
 
 # Added by OrbStack: command-line tools and integration
