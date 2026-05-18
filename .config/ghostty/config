@@ -3,6 +3,6 @@ theme = TokyoNight Night
 background-opacity = 0.92
 background-blur = 10
 
-command = fish
+command = bash -lc fish
 shell-integration = fish
 shell-integration-features = ssh-env,ssh-terminfo
