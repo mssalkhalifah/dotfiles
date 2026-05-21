@@ -1,7 +1,7 @@
 theme = TokyoNight Night
 
 background-opacity = 0.92
-background-blur = 10
+background-blur = 20
 
 command = bash -lc fish
 shell-integration = fish
