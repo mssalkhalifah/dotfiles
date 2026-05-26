@@ -15,7 +15,9 @@ end
 
 set fish_greeting ""
 
-set -gx PATH $HOME/.dotnet/tools $PATH
+set -gx DOTNET_ROOT $HOME/.dotnet
+set -gx PATH $HOME/.dotnet $HOME/.dotnet/tools $PATH
+set -gx PATH $HOME/.dotfiles $PATH
 
 if type -q /Applications/Tailscale.app/Contents/MacOS/Tailscale
     alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
