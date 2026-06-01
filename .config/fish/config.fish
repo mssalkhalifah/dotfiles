@@ -1,22 +1,26 @@
-set -x SSH_AUTH_SOCK $HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+for sock in $HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock \
+            $HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+    if test -S $sock
+        set -gx SSH_AUTH_SOCK $sock
+        break
+    end
+end
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-    set -x KUBECONFIG $HOME/.kube/config
-    # set -x PATH $PATH:/opt/nvim-linux-x86_64/bin
-    # set -x PATH $PATH:/home/mssalkhalifah/.dotnet/tools
-    # set -x SSH_AUTH_SOCK $HOME/.bitwarden-ssh-agent.sock
-
-    # nvm use lts
-
-    # aliases
+    set -gx KUBECONFIG $HOME/.kube/config
     alias ll="ls -la"
 end
 
 set fish_greeting ""
 
-set -gx DOTNET_ROOT $HOME/.dotnet
-set -gx PATH $HOME/.dotnet $HOME/.dotnet/tools $PATH
+for candidate in $HOME/.dotnet /usr/local/share/dotnet /usr/share/dotnet /opt/dotnet
+    if test -d $candidate/shared/Microsoft.NETCore.App
+        set -gx DOTNET_ROOT $candidate
+        break
+    end
+end
+
+set -gx PATH $DOTNET_ROOT $HOME/.dotnet/tools $PATH
 set -gx PATH $HOME/.dotfiles $PATH
 
 if type -q /Applications/Tailscale.app/Contents/MacOS/Tailscale
