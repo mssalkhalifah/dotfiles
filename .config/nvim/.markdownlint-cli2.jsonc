@@ -1,0 +1,12 @@
+{
+  // markdownlint-cli2 config for nvim (LazyVim lang.markdown extra). nvim is the
+  // only consumer; lua/plugins/markdownlint.lua passes this file via an absolute
+  // --config, because markdownlint-cli2 only discovers config from cwd downward.
+  "config": {
+    // MD013/line-length: off. Long prose, tables (can't be wrapped) and code
+    // blocks all tripped it; not worth fighting in design docs.
+    "MD013": false,
+    // MD060/table-column-style: pipe-padding style police. Noisy and cosmetic.
+    "MD060": false
+  }
+}
