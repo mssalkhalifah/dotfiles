@@ -22,3 +22,7 @@ if is_wsl then
     cache_enabled = 0,
   }
 end
+
+-- Keep plain y/d/p on Vim's own registers; the system clipboard is opt-in
+-- via the explicit "+ register (see <leader>y / <leader>p in keymaps.lua).
+vim.opt.clipboard = ""
