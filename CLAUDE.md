@@ -9,8 +9,8 @@ This is a personal dotfiles repository deployed via **GNU Stow**. The repo's dir
 ## Layout conventions
 
 - **Stowed (symlinked into `$HOME`)**: `.config/`, `.ideavimrc` — anything that should land in the user's home directory.
-- **Not stowed (local-only helpers)**: `.scripts/`, `.packages`, `README.md`, `LICENSE`. Exclusions are enforced by `.stow-global-ignore` — when adding new top-level helpers that shouldn't be symlinked, add them there too.
-- **`.gitignore`** additionally ignores `.claude/` and `.DS_Store`.
+- **Not stowed (local-only helpers)**: `.scripts/`, `.packages`, `README.md`, `LICENSE`, `.claude/` (skills are tracked in git but never symlinked into `$HOME`). Exclusions are enforced by `.stow-global-ignore` — when adding new top-level helpers that shouldn't be symlinked, add them there too.
+- **`.gitignore`** additionally ignores `.DS_Store` and everything under `.claude/` except `.claude/skills/`.
 
 When adding a new app config, place it under `.config/<app>/` so stow links it to `~/.config/<app>/`. Don't introduce files at the repo root unless they're meant to live at `$HOME` directly (and then add them to `.stow-global-ignore` if not).
 
@@ -41,6 +41,14 @@ JetBrains IDE Vim config. Uses `<space>` leader. Mirrors many LazyVim-style bind
 ## Ghostty (`.config/ghostty/`)
 
 **Reference**: when adding or updating Ghostty config, consult <https://ghostty.org/docs> — it's the source of truth for config keys, keybinds, and theme options.
+
+## WezTerm (`.config/wezterm/`)
+
+Lua config (`wezterm.lua`), built through `wezterm.config_builder()`. The machine runs the `wezterm@nightly` cask because the stable channel has been frozen since Feb 2024.
+
+**Use the `wezterm-config` skill** (`.claude/skills/wezterm-config/`) for any change here — it gates edits on a version-drift check against the build the config was last verified on, since nightly retires config keys between builds.
+
+**Reference**: <https://wezterm.org/config/lua/config/index.html> is the source of truth for config keys.
 
 ## Setup scripts (`.scripts/`)
 

@@ -1,0 +1,6 @@
+# WezTerm version stamp for the wezterm-config skill.
+# Written by check-version.sh --stamp. Do not hand-edit the version line.
+channel=nightly
+version=20260917-114457-b09b56c2
+stamped=2026-09-21
+docs_checked=2026-09-21
