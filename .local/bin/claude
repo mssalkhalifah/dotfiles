@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Claude Code wrapper: picks the login by directory and layers in shared skills/MCP.
+#
+#   ~/Development/work/elm/**  -> Elm login       (CLAUDE_CONFIG_DIR=~/.claude-elm; BPO lives in elm/bpo/)
+#   everywhere else            -> personal login  (~/.claude)
+#
+# Shared by both logins:
+#   skills  ~/.agents/skills/<name>            symlinked into <config>/skills on each run
+#   MCP     ~/.config/claude/mcp-shared.json   passed with --mcp-config on each session
+# Login-only skills are real directories in <config>/skills; login-only MCP servers
+# are added with `claude mcp add -s user ...` from a directory of that login.
+set -euo pipefail
+
+real=
+IFS=: read -ra path_dirs <<< "$PATH"
+for d in "${path_dirs[@]}"; do
+  if [[ -x $d/claude && ! $d/claude -ef $0 ]]; then real=$d/claude; break; fi
+done
+[[ -n $real ]] || { echo "claude wrapper: real claude binary not found on PATH" >&2; exit 127; }
+
+case "$(pwd -P)/" in
+  "$HOME"/Development/work/elm/*)
+    export CLAUDE_CONFIG_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude-elm}" ;;
+esac
+config=${CLAUDE_CONFIG_DIR:-$HOME/.claude}
+
+shared_skills=$HOME/.agents/skills
+if [[ -d $shared_skills ]]; then
+  mkdir -p "$config/skills"
+  for link in "$config"/skills/*; do
+    # Drop links to shared skills that were removed.
+    if [[ -L $link && ! -e $link && $(readlink "$link") == "$shared_skills"/* ]]; then rm "$link"; fi
+  done
+  for skill in "$shared_skills"/*; do
+    [[ -d $skill ]] || continue
+    target=$config/skills/${skill##*/}
+    # An existing entry wins: a login-only skill with the same name is never replaced.
+    [[ -e $target || -L $target ]] || ln -s "$skill" "$target"
+  done
+fi
+
+shared_mcp=$HOME/.config/claude/mcp-shared.json
+case "${1:-}" in
+  agents | attach | auth | auto-mode | doctor | gateway | import | install | logs | mcp | plugin | plugins | \
+    project | respawn | rm | setup-token | stop | kill | ultrareview | update | upgrade | \
+    -v | --version | -h | --help)
+    exec "$real" "$@" ;;
+esac
+# Appended, not prepended: --mcp-config is variadic and would swallow a leading prompt.
+if [[ -f $shared_mcp ]]; then exec "$real" "$@" --mcp-config "$shared_mcp"; fi
+exec "$real" "$@"

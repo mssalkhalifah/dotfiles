@@ -14,6 +14,7 @@ end
 
 set -gx PATH $DOTNET_ROOT $HOME/.dotnet/tools $PATH
 set -gx PATH $HOME/.dotfiles $PATH
+set -gx PATH $HOME/.local/bin $PATH
 
 if type -q /Applications/Tailscale.app/Contents/MacOS/Tailscale
     alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
