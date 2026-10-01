@@ -18,8 +18,9 @@ for d in "${path_dirs[@]}"; do
 done
 [[ -n $real ]] || { echo "claude wrapper: real claude binary not found on PATH" >&2; exit 127; }
 
+home=$(cd "$HOME" && pwd -P)
 case "$(pwd -P)/" in
-  "$HOME"/Development/work/elm/*)
+  "$home"/Development/work/elm/*)
     export CLAUDE_CONFIG_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude-elm}" ;;
 esac
 config=${CLAUDE_CONFIG_DIR:-$HOME/.claude}
