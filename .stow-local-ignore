@@ -1,6 +1,6 @@
 # Comments and blank lines are allowed.
 CLAUDE.md
-\.claude
+^/\.claude
 
 RCS
 .+,v
