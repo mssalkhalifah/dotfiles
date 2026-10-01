@@ -1,11 +1,3 @@
-for sock in $HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock \
-            $HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
-    if test -S $sock
-        set -gx SSH_AUTH_SOCK $sock
-        break
-    end
-end
-
 if status is-interactive
     set -gx KUBECONFIG $HOME/.kube/config
     alias ll="ls -la"
