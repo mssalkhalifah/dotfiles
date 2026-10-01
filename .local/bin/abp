@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# ABP CLI wrapper: picks the ABP account by directory.
+#
+# ABP keeps a single login in ~/.abp/cli/access-token.bin (path is hard-coded),
+# so each account's token lives in ~/.abp/cli/tokens/<account>.bin and
+# access-token.bin is a symlink to the one for the current directory:
+#
+#   ~/Development/work/elm/**  -> elm       (Elm-BPO)
+#   everywhere else            -> autolink  (Auto-Link)
+#
+# `abp login` from anywhere is filed by the token's organization claim, so logging
+# in once per account is enough. ABP_ACCOUNT=<account> overrides the directory.
+set -euo pipefail
+
+real=
+IFS=: read -ra path_dirs <<< "$PATH"
+for d in "${path_dirs[@]}"; do
+  if [[ -x $d/abp && ! $d/abp -ef $0 ]]; then real=$d/abp; break; fi
+done
+[[ -n $real ]] || { echo "abp wrapper: real abp binary not found on PATH" >&2; exit 127; }
+
+home=$(cd "$HOME" && pwd -P)
+case "$(pwd -P)/" in
+  "$home"/Development/work/elm/*) account=elm ;;
+  *) account=autolink ;;
+esac
+account=${ABP_ACCOUNT:-$account}
+
+cli=$HOME/.abp/cli
+tokens=$cli/tokens
+link=$cli/access-token.bin
+mkdir -p "$tokens" && chmod 700 "$tokens"
+
+# File a real access-token.bin (written by `abp login` or ABP Studio) under the
+# account named by its organization claim, then leave it as a symlink again.
+adopt_token() {
+  [[ -f $link && ! -L $link ]] || return 0
+  local org name
+  org=$(python3 -c '
+import base64, json, sys
+t = open(sys.argv[1], encoding="utf-8-sig").read().strip().split(".")[1]
+print(json.loads(base64.urlsafe_b64decode(t + "=" * (-len(t) % 4))).get("abp-organization-name", ""))
+' "$link" 2>/dev/null || true)
+  case $org in
+    Elm-BPO) name=elm ;;
+    Auto-Link) name=autolink ;;
+    "") echo "abp wrapper: can't read organization from $link; left as is" >&2; return 0 ;;
+    *) name=$(tr -c 'A-Za-z0-9\n' - <<< "$org" | tr 'A-Z' 'a-z') ;;
+  esac
+  mv "$link" "$tokens/$name.bin" && chmod 600 "$tokens/$name.bin"
+  echo "abp wrapper: saved $org login as $name" >&2
+}
+
+select_token() {
+  adopt_token
+  if [[ -f $tokens/$account.bin ]]; then
+    ln -sfn "$tokens/$account.bin" "$link"
+  elif [[ -L $link ]]; then
+    rm "$link"   # no token for this account yet: ABP sees "not logged in"
+  fi
+  # ABP caches the license in the temp folder; drop it when the account changes.
+  if [[ $(cat "$tokens/.current" 2>/dev/null) != "$account" ]]; then
+    rm -f "${TMPDIR:-/tmp}"/AbpLicense.bin
+    echo "$account" > "$tokens/.current"
+  fi
+}
+
+select_token
+case "${1:-}" in
+  login)
+    # Unlink first so the new token can't be written through into another account's file.
+    [[ -L $link ]] && rm "$link"
+    "$real" "$@" && status=0 || status=$?
+    adopt_token
+    select_token
+    exit "$status" ;;
+  logout)
+    "$real" "$@" && status=0 || status=$?
+    rm -f "$tokens/$account.bin"
+    exit "$status" ;;
+esac
+exec "$real" "$@"
